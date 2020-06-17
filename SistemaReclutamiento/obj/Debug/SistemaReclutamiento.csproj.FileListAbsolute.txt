@@ -76,4 +76,8 @@ C:\Users\desarrollo3\source\repos\SistemaReclutamiento\SistemaReclutamiento\obj\
 C:\Users\desarrollo3\source\repos\SistemaReclutamiento\SistemaReclutamiento\obj\Debug\SistemaReclutamiento.csproj.CopyComplete
 C:\Users\desarrollo3\source\repos\SistemaReclutamiento\SistemaReclutamiento\obj\Debug\SistemaReclutamiento.dll
 C:\Users\desarrollo3\source\repos\SistemaReclutamiento\SistemaReclutamiento\obj\Debug\SistemaReclutamiento.pdb
-C:\Users\desarrollo3\source\repos\SistemaReclutamiento\SistemaReclutamiento\obj\Debug\SistemaReclutamiento.csprojAssemblyReference.cache
+C:\Users\desarrollo3\source\repos\SistemaReclutamiento\SistemaReclutamiento\bin\EntityFramework.dll
+C:\Users\desarrollo3\source\repos\SistemaReclutamiento\SistemaReclutamiento\bin\EntityFramework.xml
+C:\Users\desarrollo3\source\repos\SistemaReclutamiento\SistemaReclutamiento\bin\XCrypt.dll
+C:\Users\desarrollo3\source\repos\SistemaReclutamiento\SistemaReclutamiento\bin\EntityFramework.SqlServer.dll
+C:\Users\desarrollo3\source\repos\SistemaReclutamiento\SistemaReclutamiento\bin\EntityFramework.SqlServer.xml

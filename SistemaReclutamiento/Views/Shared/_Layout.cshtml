@@ -1,5 +1,6 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@using SistemaReclutamiento.Models
+<!DOCTYPE html>
+<html lang="en" ng-app="reclutamientoModule">
 
 <head>
 
@@ -18,6 +19,7 @@
     <script src="~/Scripts/fontawesome.js"></script>
     <script src="~/Scripts/solid.js"></script>
     <script src="~/Scripts/brands.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.15.1/dist/sweetalert2.all.min.js"></script>
 
     <!-- Custom fonts for this template -->
     <link href="~/Content/all.css" rel="stylesheet" />
@@ -39,8 +41,8 @@
     <!-- Navigation -->
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"><b>Sistema de Reclutamiento.</b></a>
-  
+        <a class="navbar-brand" href="#"><b>Sistema de Reclutamiento</b></a>
+
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -53,11 +55,15 @@
                 <li class="nav-item mr-3 ">
                     @Html.ActionLink("Contact", "Contact", "Home")
                 </li>
-              
+
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <button class="btn btn-primary" href="#" data-toggle="modal" data-target="#exampleModal3" type="button">Sign In <i class="icon-login"></i></button>
-            </form>
+            @if (Session[Sesiones.Usuario] == null)
+            {
+                <form class="form-inline my-2 my-lg-0">
+                    <button class="btn btn-primary" href="#" data-toggle="modal" data-target="#exampleModal3" type="button">Sign In <i class="icon-login"></i></button>
+                </form>
+            }
+
         </div>
     </nav>
 
@@ -79,6 +85,7 @@
     <!-- Bootstrap core JavaScript -->
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/angular")
     @RenderSection("scripts", required: false)
     <script src="~/Scripts/jquery.js"></script>
     <script src="~/Scripts/bootstrap.bundle.js"></script>
@@ -137,42 +144,6 @@
 </footer>
 
 <!-- Modal -->
-<div class="modal fade bd-example-modal-lg" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModal3Label">Login <i class="icon-login"></i></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="d-flex align-items-center flex-column">
-                        <div class="w-50 p-3">
-                            <div class="col-md-12">
-                                <b>Usuario  <i class="icon-user"></i></b> <input type="text" class="form-control" name="name" value="" />
-                            </div>
-                        </div>
-                        <div class="w-50 p-3">
-                            <div class="col-md-12">
-                                <b>Password  <i class="icon-lock"></i></b> <input type="text" class="form-control" name="name" value="" />
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Log In</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
 @*<!DOCTYPE html>
     <html>
     <head>

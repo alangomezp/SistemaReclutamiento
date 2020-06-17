@@ -1,0 +1,127 @@
+﻿
+    <style>
+
+        header.masthead1 {
+            position: relative;
+            background-color: #343a40;
+            background: url("../img/bg-newone.jpg") no-repeat center center;
+            background-size: cover;
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        }
+
+    </style>
+
+<div ng-controller="CrearUsuarioControllet">
+
+
+    <!-- Masthead -->
+    
+    <header class="masthead1 text-white text-center">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+                    <h1 class="mb-5 text-black">Crear Usuario <i class="icon-user-follow"></i> </h1>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Icons Grid -->
+    <section class="features-icons bg-light text-center">
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-lg-6">
+                    <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                        <div class="features-icons-icon d-flex">
+                            <i class="icon-info m-auto text-primary"></i>
+                        </div>
+                        <h3 class="mb-5">Información</h3>
+                        <div class="d-flex flex-row">
+                            <b>Nombre de Usuario:</b>
+                            <input type="text" ng-model="nombreUsuario" class="form-control mt-1" id="usuario" value="" />
+                        </div>
+
+                        <div class="d-flex flex-row mt-5">
+                            <b>Correo Eléctronico:</b>
+                            <input type="email" ng-model="correo" class="form-control mt-1" id="correo" value="" />
+                        </div>
+
+                        <div class="d-flex flex-row mt-5">
+                            <b>Descripción: </b>
+                            <textarea class="form-control" ng-model="descripcion" rows="4" cols="50" id="descripcion"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                        <div class="features-icons-icon d-flex">
+                            <i class="icon-lock m-auto text-primary"></i>
+                        </div>
+                        <h3 class="mb-5">Seguridad</h3>
+                        <div class="d-flex flex-row">
+                            <b class="ml-3">Password:</b>
+                            <input type="password" ng-blur="limpiarConfirmacionesPass()" ng-model="pass" class="form-control mt-1 ml-2" id="pass" value="" />
+                        </div>
+
+                        <div class="d-flex flex-row mt-5">
+                            <b>Confirmar Password:</b>
+                            <input type="password" ng-blur="ConfirmarPassword()" ng-model="confirmPass" class="form-control mt-1" id="confirmpass" value="" />
+                        </div>
+
+                        <div id="success">
+                            <div class="alert alert-success" role="alert">
+                                <strong>El password coincide!</strong> Ahora puede crear el usuario
+                            </div>
+                        </div>
+
+                        <div id="error">
+                            <div class="alert alert-danger" role="alert">
+                                <strong>El password no coincide!</strong> Los password tienen que coincidir para continuar.
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-start flex-column mt-5 ml-3">
+
+                            <b>Elegir Perfil:</b>
+
+                            <div ng-repeat="perfil in Perfiles">
+
+                                <input type="radio" ng-model="perfil" name="pefiles" value="{{perfil.Id}}">
+                                <p>{{perfil.Perfil}} </p>
+
+                            </div>
+
+
+
+
+                            @*<div>
+            <div ng-repeat="perfil in Perfiles" class="checkbox">
+                <label>
+                    <input type="checkbox" checklist-model="" checklist-value="perfil.Id" />{{perfil.Perfil}}
+                </label>
+            </div>
+        </div>*@
+
+
+                        </div>
+
+                        <form class="form-inline mt-5 ml-5">
+                            <button type="button" id="btncrear" ng-click="CreateUser()" disabled class="btn btn-primary mr-3">Crear Usuario <i class="ml-1 fa fa-user-plus"></i></button>
+                            <button type="button" class="btn btn-secondary">Nuevo <i class="ml-1 fa fa-pencil-alt"></i></button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+</div>
+

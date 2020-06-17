@@ -18,6 +18,11 @@ h6 {
   font-weight: 700;
 }
 
+.text-black{
+
+    color: black;
+}
+
 header.masthead {
   position: relative;
   background-color: #343a40;
