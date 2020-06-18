@@ -25,13 +25,15 @@ namespace SistemaReclutamiento
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/mg-table.css"));
 
             bundles.Add(new ScriptBundle("~/Scripts/angular").Include(
                       "~/Scripts/angular.js",
                       "~/Scripts/angular-route.js",
                       "~/Scripts/Checklist-model.js",
-                      "~/Scripts/controlador.js"));
+                      "~/Scripts/controlador.js",
+                      "~/Scripts/ng-table.js"));
 
         }
     }

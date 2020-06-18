@@ -26,6 +26,7 @@
     <Property Name="Descripcion" Type="nvarchar(max)" />
     <Property Name="Correo" Type="nvarchar" MaxLength="50" />
     <Property Name="PerfilId" Type="int" Nullable="false" />
+    <Property Name="Activo" Type="bit" />
   </EntityType>
   <EntityContainer Name="SistemaReclutamientoDBModelStoreContainer">
     <EntitySet Name="Perfiles" EntityType="Self.Perfiles" Schema="dbo" store:Type="Tables" />

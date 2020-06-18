@@ -150,13 +150,19 @@ reclutamientoModule.controller('CrearUsuarioController', function ($http, $scope
     $scope.pass = '';
     $scope.correo = '';
     $scope.confirmPass = '';
-    $scope.Perfiles = [];
+    $scope.Perfiles = {};
+    $scope.Usuarios = [];
+    var usuarioAEditar = {};
+    $scope.modify = false;
+
+
+    GetPerfiles();
+    GetUsuarios();
 
     $scope.perfil = {
         id: 0
     };
 
-    GetPerfiles();
 
     $("#success").hide();
     $("#error").hide();
@@ -172,11 +178,100 @@ reclutamientoModule.controller('CrearUsuarioController', function ($http, $scope
 
             $scope.Perfiles = response.data;
 
-            console.log($scope.Perfiles);
+        }, function error(err) {
+
+        });
+
+    }
+
+    
+
+  function GetUsuarios() {
+
+        $http({
+
+            method: 'GET',
+            url: '/Manager/GetUsuarios'
+
+        }).then(function success(response) {
+
+            $scope.Usuarios = response.data;
 
         }, function error(err) {
 
         });
+
+    }
+
+
+    $scope.DesactivarUsuario = function (Id) {
+
+
+        $http({
+
+            method: 'POST',
+            url: '/Manager/DesactivarUsuario?id=' + Id,
+
+        }).then(function success(response) {
+
+            swal.fire(response.data.message, response.data.messageInfo, response.data.messageType)
+            GetUsuarios();
+        }, function error(err) {
+
+        });
+    }
+
+
+    $scope.ModificarUsuario = function () {
+
+
+
+        $http({
+
+            method: 'POST',
+            url: '/Manager/ModificarUsuario',
+            data: usuarioAEditar
+
+        }).then(function success(response) {
+
+            swal.fire(response.data.message, response.data.messageInfo, response.data.messageType)
+            GetUsuarios();
+        }, function error(err) {
+
+        });
+    }
+
+
+    $scope.EditUsuario = function (datos) {
+
+        $scope.modify = true;
+        usuarioAEditar = datos;
+
+        $scope.nombreUsuario = usuarioAEditar.Usuario;
+        $scope.pass = usuarioAEditar.Password;
+        $scope.correo = usuarioAEditar.Correo;
+        $scope.descripcion = usuarioAEditar.Descripcion;
+        $scope.perfil = {
+            id: usuarioAEditar.PerfilId
+
+        };
+
+        console.log(datos);
+        console.log(usuarioAEditar);
+
+        //$http({
+
+        //    method: 'GET',
+        //    url: '/Manager/EditUsuario',
+        //    data: datos
+
+        //}).then(function success(response) {
+
+        //    swal.fire('Gj', 'Usuario Modificado', 'success')
+
+        //}, function error(err) {
+
+        //});
 
     }
 
@@ -226,7 +321,8 @@ reclutamientoModule.controller('CrearUsuarioController', function ($http, $scope
             url: '/Manager/CreateUser',
             data: datos
         }).then(function success(response) {
-            swal.fire('Creacion Exitosa!', response, 'success');
+            swal.fire(response.data.message, response.data.messageInfo, response.data.messageType)
+
 
             $("#confirmpass").css("border", "1px solid #ced4da");
             $("#success").hide();
@@ -236,8 +332,10 @@ reclutamientoModule.controller('CrearUsuarioController', function ($http, $scope
             $scope.pass = '';
             $scope.correo = '';
             $scope.confirmPass = '';
-            $scope.perfil = '';
+            $scope.perfil.id = 0;
             $scope.descripcion = '';
+
+            GetUsuarios();
 
         }, function error(err) {
 

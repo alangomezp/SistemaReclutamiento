@@ -165,3 +165,4 @@ C:\Users\Alan\Source\Repos\SistemaReclutamiento\SistemaReclutamiento\obj\Debug\S
 C:\Users\Alan\Source\Repos\SistemaReclutamiento\SistemaReclutamiento\obj\Debug\SistemaReclutamiento.dll
 C:\Users\Alan\Source\Repos\SistemaReclutamiento\SistemaReclutamiento\obj\Debug\SistemaReclutamiento.pdb
 C:\Users\Alan\Source\Repos\SistemaReclutamiento\SistemaReclutamiento\obj\Debug\SistemaReclutamiento.csprojAssemblyReference.cache
+C:\Users\desarrollo3\source\repos\SistemaReclutamiento\SistemaReclutamiento\obj\Debug\SistemaReclutamiento.csprojAssemblyReference.cache

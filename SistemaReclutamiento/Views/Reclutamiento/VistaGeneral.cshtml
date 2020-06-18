@@ -1,5 +1,18 @@
 ﻿@using SistemaReclutamiento.Models
 
+
+    <style>
+
+        header.masthead {
+            position: relative;
+            background-color: #343a40;
+            background: url("../img/bg-meet.jpg") no-repeat center center;
+            background-size: cover;
+            padding-top: 7rem;
+            padding-bottom: 7rem;
+        }
+
+    </style>
 <div ng-controller="LoginController">
 
 
@@ -9,7 +22,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-9 mx-auto">
-                    <h1 class="mb-5">Bienvenido/a a nuestro Sistema de Reclutamiento @Session[Sesiones.Usuario] <i class="fas fa-user-circle"></i> </h1>
+                    <h1 class="mb-5">Bienvenido/a a nuestro Sistema de Reclutamiento <u>@Session[Sesiones.Usuario]</u> <i class="fas fa-user-circle"></i> </h1>
                 </div>
            
             </div>

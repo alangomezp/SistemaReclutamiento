@@ -57,6 +57,11 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -160,6 +165,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ReclutamientoDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Response.cs" />
     <Compile Include="Models\Sesiones.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Models\Usuarios.cs">
@@ -183,6 +189,8 @@
     <Content Include="Content\fontawesome.css" />
     <Content Include="Content\fontawesome.min.css" />
     <Content Include="Content\landing-page.css" />
+    <Content Include="Content\ng-table.css" />
+    <Content Include="Content\ng-table.min.css" />
     <Content Include="Content\regular.css" />
     <Content Include="Content\regular.min.css" />
     <Content Include="Content\simple-line-icons.css" />
@@ -300,6 +308,8 @@
     <Content Include="Scripts\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
+    <Content Include="Content\ng-table.min.css.map" />
+    <Content Include="Content\ng-table.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\brands.js" />
     <Content Include="Scripts\brands.min.js" />
@@ -1061,6 +1071,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\ng-table.js" />
+    <Content Include="Scripts\ng-table.min.js" />
     <Content Include="Scripts\regular.js" />
     <Content Include="Scripts\regular.min.js" />
     <Content Include="Scripts\sitemap.xml" />
@@ -1093,6 +1105,8 @@
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Reclutamiento\VistaGeneral.cshtml" />
     <Content Include="Views\Manager\CrearUsuario.cshtml" />
+    <Content Include="Scripts\ng-table.min.js.map" />
+    <Content Include="Scripts\ng-table.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

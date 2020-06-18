@@ -22,6 +22,7 @@
     <EntitySetMapping Name="Usuarios">
       <EntityTypeMapping TypeName="SistemaReclutamientoDBModel.Usuarios">
         <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
           <ScalarProperty Name="PerfilId" ColumnName="PerfilId" />
           <ScalarProperty Name="Correo" ColumnName="Correo" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />

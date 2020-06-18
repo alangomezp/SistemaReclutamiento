@@ -21,8 +21,8 @@ namespace SistemaReclutamiento.Controllers
 
         public ActionResult LoginUsers(Users u)
         {
-
-            string password = EncryptEngine.Encriptar(u.password);
+            string key = "sdr";
+            string password = EncryptEngine.Encriptar(u.password, key);
 
             var datos = (from a in db.Usuarios
                          where a.Usuario == u.usuario
@@ -34,7 +34,6 @@ namespace SistemaReclutamiento.Controllers
                              password = a.Password,
                              perfilid = a.PerfilId
                          }).FirstOrDefault();
-
 
             if (datos == null || datos.password == null || password != datos.password)
             {

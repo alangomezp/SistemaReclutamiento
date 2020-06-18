@@ -31,6 +31,7 @@
           <Property Name="Descripcion" Type="nvarchar(max)" />
           <Property Name="Correo" Type="nvarchar" MaxLength="50" />
           <Property Name="PerfilId" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" />
         </EntityType>
         <EntityContainer Name="SistemaReclutamientoDBModelStoreContainer">
           <EntitySet Name="Perfiles" EntityType="Self.Perfiles" Schema="dbo" store:Type="Tables" />
@@ -72,6 +73,7 @@
           <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PerfilId" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -100,6 +102,7 @@
           <EntitySetMapping Name="Usuarios">
             <EntityTypeMapping TypeName="SistemaReclutamientoDBModel.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
                 <ScalarProperty Name="PerfilId" ColumnName="PerfilId" />
                 <ScalarProperty Name="Correo" ColumnName="Correo" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />

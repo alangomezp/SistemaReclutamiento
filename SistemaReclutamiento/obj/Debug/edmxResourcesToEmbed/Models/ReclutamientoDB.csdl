@@ -31,5 +31,6 @@
     <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="PerfilId" Type="Int32" Nullable="false" />
+    <Property Name="Activo" Type="Boolean" />
   </EntityType>
 </Schema>
