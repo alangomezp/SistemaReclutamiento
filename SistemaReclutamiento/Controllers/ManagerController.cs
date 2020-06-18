@@ -29,8 +29,32 @@ namespace SistemaReclutamiento.Controllers
             return new JsonResult { Data = perfiles, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
-        public void CreateUser(Usuarios usuarios)
+        public JsonResult CreateUser(Usuarios usuarios)
         {
+
+            var password = EncryptEngine.Encriptar(usuarios.Password);
+
+            try
+            {
+                Usuarios user = new Usuarios();
+
+                user.Usuario = usuarios.Usuario;
+                user.Password = password;
+                user.Correo = usuarios.Correo;
+                user.Descripcion = usuarios.Descripcion;
+                user.PerfilId = usuarios.PerfilId;
+
+                db.Usuarios.Add(user);
+                db.SaveChanges();
+
+                return new JsonResult { Data = "Usuario creado correctamente!", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+
+            }
+            catch (Exception e)
+            {
+
+                return new JsonResult { Data = "Lo sentimos ha ocurrido un error.", JsonRequestBehavior = JsonRequestBehavior.AllowGet};
+            }
 
         }
     }

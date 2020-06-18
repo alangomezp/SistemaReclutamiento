@@ -22,30 +22,27 @@ namespace SistemaReclutamiento.Controllers
         public ActionResult LoginUsers(Users u)
         {
 
-            //string password = EncryptEngine.Encriptar(u.password);
+            string password = EncryptEngine.Encriptar(u.password);
 
-            //var datos = (from a in db.Usuarios
-            //             where a.Usuario == u.usuraio
-            //             && a.Password == password
-            //             select new Users
-            //             {
-            //                 id = a.Id,
-            //                 usuraio = a.Usuario,
-            //                 password = a.Password
-            //             }).FirstOrDefault();
+            var datos = (from a in db.Usuarios
+                         where a.Usuario == u.usuario
+                         && a.Password == password
+                         select new Users
+                         {
+                             id = a.Id,
+                             usuario = a.Usuario,
+                             password = a.Password,
+                             perfilid = a.PerfilId
+                         }).FirstOrDefault();
 
-            //if (datos.password == null)
-            //    return RedirectToAction("Index", "Home");
-            //if (password != datos.password)
-            //    return RedirectToAction("Index", "Home");
 
-            Session[Sesiones.Usuario] = "AlanGomez"/*datos.usuraio*/;
+            if (datos == null || datos.password == null || password != datos.password)
+            {
+                return new JsonResult { Data = true, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
 
-            //var perfil = (from a in db.PerfilesUsuarios
-            //              where a.UsuarioId == datos.id
-            //              select a.PerfilId).DefaultIfEmpty().FirstOrDefault();
-
-            //Session[Sesiones.Perfil] = perfil;
+            Session[Sesiones.Usuario] = datos.usuario;
+            Session[Sesiones.Perfil] = datos.perfilid;
 
             return Json(Url.Action("VistaGeneral", "Reclutamiento"));
 

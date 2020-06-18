@@ -109,7 +109,10 @@
                             </div>
                             <div class="w-50 p-3">
                                 <div class="col-md-12">
-                                    <b>Password  <i class="icon-lock"></i></b> <input type="text" ng-model="password" class="form-control" name="name" value="" />
+                                    <b>Password  <i class="icon-lock"></i></b> <input type="password" ng-enter="Login()" ng-model="password" class="form-control" name="name" value="" />
+                                </div>
+                                <div ng-show="error" class="alert alert-danger mt-2" role="alert">
+                                    <strong>Usuario o password incorrecto!</strong> Verifique sus datos.
                                 </div>
                             </div>
                         </div>
@@ -117,7 +120,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Log In</button>
+                    <button type="button" class="btn btn-primary" ng-click="Login()">Log In</button>
                 </div>
             </div>
         </div>

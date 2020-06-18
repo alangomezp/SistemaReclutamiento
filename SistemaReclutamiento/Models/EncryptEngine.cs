@@ -15,7 +15,7 @@ namespace SistemaReclutamiento.Models
 
             try
             {
-                xcrip.InitializeEngine(XCryptEngine.AlgorithmType.TripleDES);
+                xcrip.InitializeEngine(XCryptEngine.AlgorithmType.SHA);
                 return xcrip.Encrypt(_password);
             }
             finally
@@ -32,7 +32,7 @@ namespace SistemaReclutamiento.Models
 
             try
             {
-                xcrip.InitializeEngine(XCryptEngine.AlgorithmType.TripleDES);
+                xcrip.InitializeEngine(XCryptEngine.AlgorithmType.SHA);
                 return xcrip.Decrypt(_password);
             }
             finally

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SistemaReclutamientoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SistemaReclutamientoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Perfiles">
           <Key>
             <PropertyRef Name="Id" />
@@ -27,60 +27,32 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Descripcion" Type="nvarchar(max)" />
           <Property Name="Correo" Type="nvarchar" MaxLength="50" />
+          <Property Name="PerfilId" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__PerfilesU__Perfi__276EDEB3">
-          <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
-          <End Role="PerfilesUsuarios" Type="Self.PerfilesUsuarios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Perfiles">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PerfilesUsuarios">
-              <PropertyRef Name="PerfilId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PerfilesU__Usuar__286302EC">
-          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
-          <End Role="PerfilesUsuarios" Type="Self.PerfilesUsuarios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuarios">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PerfilesUsuarios">
-              <PropertyRef Name="UsuarioId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="SistemaReclutamientoDBModelStoreContainer">
           <EntitySet Name="Perfiles" EntityType="Self.Perfiles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PerfilesUsuarios" EntityType="Self.PerfilesUsuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__PerfilesU__Perfi__276EDEB3" Association="Self.FK__PerfilesU__Perfi__276EDEB3">
-            <End Role="Perfiles" EntitySet="Perfiles" />
-            <End Role="PerfilesUsuarios" EntitySet="PerfilesUsuarios" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PerfilesU__Usuar__286302EC" Association="Self.FK__PerfilesU__Usuar__286302EC">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="PerfilesUsuarios" EntitySet="PerfilesUsuarios" />
-          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SistemaReclutamientoDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SistemaReclutamientoDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Perfiles" EntityType="SistemaReclutamientoDBModel.Perfiles" />
+          <EntitySet Name="PerfilesUsuarios" EntityType="SistemaReclutamientoDBModel.PerfilesUsuarios" />
+          <EntitySet Name="Usuarios" EntityType="SistemaReclutamientoDBModel.Usuarios" />
+        </EntityContainer>
         <EntityType Name="Perfiles">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Perfil" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Perfil" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
           <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PerfilesUsuarios" Relationship="Self.FK__PerfilesU__Perfi__276EDEB3" FromRole="Perfiles" ToRole="PerfilesUsuarios" />
         </EntityType>
         <EntityType Name="PerfilesUsuarios">
           <Key>
@@ -89,57 +61,18 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PerfilId" Type="Int32" Nullable="false" />
           <Property Name="UsuarioId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Perfiles" Relationship="Self.FK__PerfilesU__Perfi__276EDEB3" FromRole="PerfilesUsuarios" ToRole="Perfiles" />
-          <NavigationProperty Name="Usuarios" Relationship="Self.FK__PerfilesU__Usuar__286302EC" FromRole="PerfilesUsuarios" ToRole="Usuarios" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PerfilesUsuarios" Relationship="Self.FK__PerfilesU__Usuar__286302EC" FromRole="Usuarios" ToRole="PerfilesUsuarios" />
+          <Property Name="PerfilId" Type="Int32" Nullable="false" />
         </EntityType>
-        <Association Name="FK__PerfilesU__Perfi__276EDEB3">
-          <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
-          <End Role="PerfilesUsuarios" Type="Self.PerfilesUsuarios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Perfiles">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PerfilesUsuarios">
-              <PropertyRef Name="PerfilId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PerfilesU__Usuar__286302EC">
-          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
-          <End Role="PerfilesUsuarios" Type="Self.PerfilesUsuarios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuarios">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PerfilesUsuarios">
-              <PropertyRef Name="UsuarioId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="SistemaReclutamientoDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Perfiles" EntityType="Self.Perfiles" />
-          <EntitySet Name="PerfilesUsuarios" EntityType="Self.PerfilesUsuarios" />
-          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
-          <AssociationSet Name="FK__PerfilesU__Perfi__276EDEB3" Association="Self.FK__PerfilesU__Perfi__276EDEB3">
-            <End Role="Perfiles" EntitySet="Perfiles" />
-            <End Role="PerfilesUsuarios" EntitySet="PerfilesUsuarios" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PerfilesU__Usuar__286302EC" Association="Self.FK__PerfilesU__Usuar__286302EC">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="PerfilesUsuarios" EntitySet="PerfilesUsuarios" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -149,29 +82,30 @@
           <EntitySetMapping Name="Perfiles">
             <EntityTypeMapping TypeName="SistemaReclutamientoDBModel.Perfiles">
               <MappingFragment StoreEntitySet="Perfiles">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Perfil" ColumnName="Perfil" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Perfil" ColumnName="Perfil" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PerfilesUsuarios">
             <EntityTypeMapping TypeName="SistemaReclutamientoDBModel.PerfilesUsuarios">
               <MappingFragment StoreEntitySet="PerfilesUsuarios">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="PerfilId" ColumnName="PerfilId" />
                 <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="PerfilId" ColumnName="PerfilId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usuarios">
             <EntityTypeMapping TypeName="SistemaReclutamientoDBModel.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="PerfilId" ColumnName="PerfilId" />
                 <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

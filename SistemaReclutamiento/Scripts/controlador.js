@@ -115,9 +115,11 @@ reclutamientoModule.controller('LoginController', function ($scope, $http) {
 
     $scope.usuario = '';
     $scope.password = '';
-
+    $scope.error = false;
 
     $scope.Login = function () {
+
+        
 
         var datos = {
 
@@ -129,30 +131,30 @@ reclutamientoModule.controller('LoginController', function ($scope, $http) {
         $http.post('/Login/LoginUsers', datos)
             .then(function success(data) {
 
-                console.log(data);
-                window.location.href = data.data;
+                if (data.data == true) {
+                    $scope.error = true;
+                } else {
+                    window.location.href = data.data;
+                }
+                
             }, function error() {
 
                 console.log("error");
             })
-
-
-
-
-
-
-
     }
 });
 
-reclutamientoModule.controller('CrearUsuarioControllet', function ($http, $scope) {
+reclutamientoModule.controller('CrearUsuarioController', function ($http, $scope) {
 
     $scope.nombreUsuario = '';
     $scope.pass = '';
     $scope.correo = '';
     $scope.confirmPass = '';
     $scope.Perfiles = [];
-    $scope.perfil = '';
+
+    $scope.perfil = {
+        id: 0
+    };
 
     GetPerfiles();
 
@@ -209,13 +211,14 @@ reclutamientoModule.controller('CrearUsuarioControllet', function ($http, $scope
 
     $scope.CreateUser = function () {
 
+    
         var datos = {
 
             Usuario: $scope.nombreUsuario,
             Password: $scope.pass,
             Correo: $scope.correo,
             Descripcion: $scope.descripcion,
-            PerfilUsuarios: $scope.perfil
+            PerfilId: $scope.perfil.id
         }
 
         $http({
@@ -223,10 +226,22 @@ reclutamientoModule.controller('CrearUsuarioControllet', function ($http, $scope
             url: '/Manager/CreateUser',
             data: datos
         }).then(function success(response) {
+            swal.fire('Creacion Exitosa!', response, 'success');
 
+            $("#confirmpass").css("border", "1px solid #ced4da");
+            $("#success").hide();
+            $("#error").hide();
+
+            $scope.nombreUsuario = '';
+            $scope.pass = '';
+            $scope.correo = '';
+            $scope.confirmPass = '';
+            $scope.perfil = '';
+            $scope.descripcion = '';
 
         }, function error(err) {
 
+            swal.fire('Error!', err, 'error');
 
         })
 

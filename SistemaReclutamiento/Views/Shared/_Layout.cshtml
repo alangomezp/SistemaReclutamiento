@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Landing Page - Start Bootstrap Theme</title>
+    <title>Sistema de Reclutamiento</title>
 
     <!-- Bootstrap core CSS -->
     @*<link href="template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">*@
@@ -46,21 +46,40 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active mr-3">
-                    @Html.ActionLink("Home", "Index", "Home")
-                </li>
-                <li class="nav-item mr-3">
-                    @Html.ActionLink("About", "About", "Home")
-                </li>
-                <li class="nav-item mr-3 ">
-                    @Html.ActionLink("Contact", "Contact", "Home")
-                </li>
+
+                @*<li class="nav-item active mr-3">
+            @Html.ActionLink("Home", "Index", "Home")
+        </li>*@
+
+                @*@if ((int)Session[Sesiones.Perfil] == 1 && Session[Sesiones.Perfil] != null)
+                {
+                    <li class="nav-item mr-3 ">
+                        @Html.ActionLink("Crear Usuario", "CrearUsuario", "Manager")
+                    </li>
+                }
+                else if ((int)Session[Sesiones.Perfil] == 2 && Session[Sesiones.Perfil] != null)
+                {
+
+                    <li class="nav-item mr-3">
+                         @Html.ActionLink("About", "About", "Home")
+                    </li>
+                    <li class="nav-item mr-3 ">
+                         @Html.ActionLink("Contact", "Contact", "Home")
+                    </li>
+                }*@
+
 
             </ul>
             @if (Session[Sesiones.Usuario] == null)
             {
                 <form class="form-inline my-2 my-lg-0">
                     <button class="btn btn-primary" href="#" data-toggle="modal" data-target="#exampleModal3" type="button">Sign In <i class="icon-login"></i></button>
+                </form>
+            }
+            else
+            {
+                <form class="form-inline my-2 my-lg-0">
+                    <button class="btn btn-primary" href="#" type="button">Log Out <i class="icon-logout"></i> @Html.ActionLink("Log Out", "Index", "Home")</button>
                 </form>
             }
 

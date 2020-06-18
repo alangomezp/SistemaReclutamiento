@@ -5,11 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="c883e8c6836f482ebc5fff1617ba9c11" Name="Diagram1">
-        <EntityTypeShape EntityType="SistemaReclutamientoDBModel.Perfiles" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="SistemaReclutamientoDBModel.PerfilesUsuarios" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SistemaReclutamientoDBModel.Usuarios" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
-        <AssociationConnector Association="SistemaReclutamientoDBModel.FK__PerfilesU__Perfi__276EDEB3" ManuallyRouted="false" />
-        <AssociationConnector Association="SistemaReclutamientoDBModel.FK__PerfilesU__Usuar__286302EC" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SistemaReclutamientoDBModel.Perfiles" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SistemaReclutamientoDBModel.PerfilesUsuarios" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SistemaReclutamientoDBModel.Usuarios" Width="1.5" PointX="0.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -12,7 +12,7 @@
 
     </style>
 
-<div ng-controller="CrearUsuarioControllet">
+<div ng-controller="CrearUsuarioController">
 
 
     <!-- Masthead -->
@@ -34,7 +34,7 @@
         <div class="container">
             <div class="row">
 
-
+                
                 <div class="col-lg-6">
                     <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
                         <div class="features-icons-icon d-flex">
@@ -46,10 +46,20 @@
                             <input type="text" ng-model="nombreUsuario" class="form-control mt-1" id="usuario" value="" />
                         </div>
 
-                        <div class="d-flex flex-row mt-5">
+                        <form name="form" class="d-flex align-items-start flex-row mt-5 mr-5">
+                            
                             <b>Correo Eléctronico:</b>
-                            <input type="email" ng-model="correo" class="form-control mt-1" id="correo" value="" />
-                        </div>
+                            <div role="alert" class="d-flex align-items-start flex-column col-11">
+                                <input type="email" ng-model="correo" name="input" class="form-control mt-1" required id="correo" value="" />
+
+                                @*<span class="alert alert-danger mt-2" ng-show="form.input.$error.required">
+                                    Required!
+                                </span>*@
+                                <span class="alert alert-danger mt-2" ng-show="form.input.$error.email">
+                                    <strong>Correo inválido!</strong> No tiene formato de correo.
+                                </span>
+                            </div>
+                        </form>
 
                         <div class="d-flex flex-row mt-5">
                             <b>Descripción: </b>
@@ -90,24 +100,10 @@
 
                             <b>Elegir Perfil:</b>
 
-                            <div ng-repeat="perfil in Perfiles">
-
-                                <input type="radio" ng-model="perfil" name="pefiles" value="{{perfil.Id}}">
-                                <p>{{perfil.Perfil}} </p>
-
-                            </div>
-
-
-
-
-                            @*<div>
-            <div ng-repeat="perfil in Perfiles" class="checkbox">
-                <label>
-                    <input type="checkbox" checklist-model="" checklist-value="perfil.Id" />{{perfil.Perfil}}
-                </label>
-            </div>
-        </div>*@
-
+                            <label ng-repeat="p in Perfiles">
+                                <input ng-model="perfil.id" type="radio" name="perfiles" value="{{p.Id}}">
+                                {{p.Perfil}}
+                            </label>
 
                         </div>
 

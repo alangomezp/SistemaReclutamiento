@@ -4,29 +4,30 @@
     <EntitySetMapping Name="Perfiles">
       <EntityTypeMapping TypeName="SistemaReclutamientoDBModel.Perfiles">
         <MappingFragment StoreEntitySet="Perfiles">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Perfil" ColumnName="Perfil" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Perfil" ColumnName="Perfil" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="PerfilesUsuarios">
       <EntityTypeMapping TypeName="SistemaReclutamientoDBModel.PerfilesUsuarios">
         <MappingFragment StoreEntitySet="PerfilesUsuarios">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="PerfilId" ColumnName="PerfilId" />
           <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+          <ScalarProperty Name="PerfilId" ColumnName="PerfilId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Usuarios">
       <EntityTypeMapping TypeName="SistemaReclutamientoDBModel.Usuarios">
         <MappingFragment StoreEntitySet="Usuarios">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="PerfilId" ColumnName="PerfilId" />
           <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

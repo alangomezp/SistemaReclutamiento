@@ -11,6 +11,8 @@ namespace SistemaReclutamiento.Controllers
     {
         public ActionResult Index()
         {
+            Session[Sesiones.Usuario] = null;
+            Session[Sesiones.Perfil] = null;
 
             return View();
         }

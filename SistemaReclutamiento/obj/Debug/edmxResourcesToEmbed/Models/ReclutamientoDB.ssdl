@@ -22,45 +22,14 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Password" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Descripcion" Type="nvarchar(max)" />
     <Property Name="Correo" Type="nvarchar" MaxLength="50" />
+    <Property Name="PerfilId" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="FK__PerfilesU__Perfi__276EDEB3">
-    <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
-    <End Role="PerfilesUsuarios" Type="Self.PerfilesUsuarios" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Perfiles">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PerfilesUsuarios">
-        <PropertyRef Name="PerfilId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__PerfilesU__Usuar__286302EC">
-    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
-    <End Role="PerfilesUsuarios" Type="Self.PerfilesUsuarios" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Usuarios">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PerfilesUsuarios">
-        <PropertyRef Name="UsuarioId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="SistemaReclutamientoDBModelStoreContainer">
     <EntitySet Name="Perfiles" EntityType="Self.Perfiles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PerfilesUsuarios" EntityType="Self.PerfilesUsuarios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__PerfilesU__Perfi__276EDEB3" Association="Self.FK__PerfilesU__Perfi__276EDEB3">
-      <End Role="Perfiles" EntitySet="Perfiles" />
-      <End Role="PerfilesUsuarios" EntitySet="PerfilesUsuarios" />
-    </AssociationSet>
-    <AssociationSet Name="FK__PerfilesU__Usuar__286302EC" Association="Self.FK__PerfilesU__Usuar__286302EC">
-      <End Role="Usuarios" EntitySet="Usuarios" />
-      <End Role="PerfilesUsuarios" EntitySet="PerfilesUsuarios" />
-    </AssociationSet>
   </EntityContainer>
 </Schema>
