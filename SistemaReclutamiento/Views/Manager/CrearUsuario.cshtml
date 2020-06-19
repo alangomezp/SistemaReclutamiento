@@ -136,7 +136,7 @@
                                 <thead>
                                     <tr>
                                         <th>Usuario</th>
-                                        <th>Descripción</th>
+                                        @*<th>Descripción</th>*@
                                         <th>Correo</th>
                                         <th>Editar</th>
                                         <th>Desactivar</th>
@@ -145,7 +145,7 @@
                                 <tbody>
                                     <tr ng-repeat="u in Usuarios">
                                         <td>{{u.Usuario}}</td>
-                                        <td>{{u.Descripcion}}</td>
+                                        @*<td>{{u.Descripcion}}</td>*@
                                         <td>{{u.Correo}}</td>
                                         <td ng-click="EditUsuario(u)"><button class=" btn btn-sm btn-light"><i class="fa fa-edit"></i></button></td>
                                         <td ng-click="DesactivarUsuario(u.Id)"><button class=" btn btn-sm btn-light"><i class="fa fa-times"></i></button></td>
@@ -154,6 +154,8 @@
                                 </tbody>
                             </table>
                         </div>
+                            
+                        
                        
 
                     </div>
