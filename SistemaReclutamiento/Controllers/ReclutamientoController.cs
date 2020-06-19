@@ -13,5 +13,10 @@ namespace SistemaReclutamiento.Controllers
         {
             return View();
         }
+
+        public ActionResult RegistrarCandidato()
+        {
+            return View();
+        }
     }
 }

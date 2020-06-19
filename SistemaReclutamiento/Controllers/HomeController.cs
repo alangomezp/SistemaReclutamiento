@@ -17,6 +17,12 @@ namespace SistemaReclutamiento.Controllers
             return View();
         }
 
+        public ActionResult Error()
+        {
+            Session[Sesiones.Perfil] = "error";
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

@@ -111,16 +111,44 @@ reclutamientoModule.directive('checklistModel', ['$parse', '$compile', function 
     };
 }]);
 
+
+//Controlador de la pagina Layout
+reclutamientoModule.controller('LayoutController', function ($scope, $http) {
+
+    $scope.Desloguearse = function () {
+
+        Swal.fire({
+            title: '¿Está seguro de cerrar sesión?',
+            text: "Si es asi, esperamos que vuela pronto :)",
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Cerrar Sesión!'
+        }).then((result) => {
+            if (result.value) {
+                window.location.href = "/Home/Index";
+            }
+        })
+
+    }
+
+
+})
+
+
+//Controlador de la pagina Index donde esta el Login
 reclutamientoModule.controller('LoginController', function ($scope, $http) {
 
     $scope.usuario = '';
     $scope.password = '';
     $scope.error = false;
+    $scope.isLoading = false;
 
     $scope.Login = function () {
 
-        
-
+        $scope.isLoading = true;
+        $scope.error = false;
         var datos = {
 
             usuario: $scope.usuario,
@@ -131,6 +159,8 @@ reclutamientoModule.controller('LoginController', function ($scope, $http) {
         $http.post('/Login/LoginUsers', datos)
             .then(function success(data) {
 
+                $scope.isLoading = false;
+
                 if (data.data == true) {
                     $scope.error = true;
                 } else {
@@ -138,12 +168,13 @@ reclutamientoModule.controller('LoginController', function ($scope, $http) {
                 }
                 
             }, function error() {
-
+                    $scope.isLoading = false;
                 console.log("error");
             })
     }
 });
 
+//Controlador de la pagina CrearUsuarios
 reclutamientoModule.controller('CrearUsuarioController', function ($http, $scope) {
 
     $scope.nombreUsuario = '';
@@ -154,6 +185,7 @@ reclutamientoModule.controller('CrearUsuarioController', function ($http, $scope
     $scope.Usuarios = [];
     var usuarioAEditar = {};
     $scope.modify = false;
+    $scope.isLoading = false;
 
 
     GetPerfiles();
@@ -169,17 +201,19 @@ reclutamientoModule.controller('CrearUsuarioController', function ($http, $scope
 
    function GetPerfiles() {
 
+
+
         $http({
 
             method: 'GET',
             url: '/Manager/GetPerfiles'
 
         }).then(function success(response) {
-
+            
             $scope.Perfiles = response.data;
 
         }, function error(err) {
-
+                alert(err.data);
         });
 
     }
@@ -187,6 +221,8 @@ reclutamientoModule.controller('CrearUsuarioController', function ($http, $scope
     
 
   function GetUsuarios() {
+
+      $scope.isLoading = true;
 
         $http({
 
@@ -196,9 +232,10 @@ reclutamientoModule.controller('CrearUsuarioController', function ($http, $scope
         }).then(function success(response) {
 
             $scope.Usuarios = response.data;
-
+            $scope.isLoading = false;
         }, function error(err) {
-
+                alert(err.data);
+                $scope.isLoading = false;
         });
 
     }
@@ -217,28 +254,58 @@ reclutamientoModule.controller('CrearUsuarioController', function ($http, $scope
             swal.fire(response.data.message, response.data.messageInfo, response.data.messageType)
             GetUsuarios();
         }, function error(err) {
-
+                alert(err.data);
         });
     }
 
 
     $scope.ModificarUsuario = function () {
 
+        var datos = {
 
+            Id: usuarioAEditar.Id,
+            Usuario: $scope.nombreUsuario,
+            Password: $scope.pass,
+            Correo: $scope.correo,
+            Descripcion: $scope.descripcion,
+            PerfilId: $scope.perfil.id
+        }
 
         $http({
 
             method: 'POST',
             url: '/Manager/ModificarUsuario',
-            data: usuarioAEditar
+            data: datos
 
         }).then(function success(response) {
 
             swal.fire(response.data.message, response.data.messageInfo, response.data.messageType)
             GetUsuarios();
-        }, function error(err) {
+            $scope.modify = false;
+            $scope.nombreUsuario = "";
+            $scope.pass = "";
+            $scope.correo = "";
+            $scope.descripcion = "";
+            $scope.perfil = {
+                id: 0
 
+            };
+        }, function error(err) {
+                alert(err.data);
         });
+    }
+
+    $scope.LimpiarCrearUsuariosForm = function () {
+
+        $scope.modify = false;
+        $scope.nombreUsuario = "";
+        $scope.pass = "";
+        $scope.correo = "";
+        $scope.descripcion = "";
+        $scope.perfil = {
+            id: 0
+
+        };
     }
 
 
@@ -255,24 +322,6 @@ reclutamientoModule.controller('CrearUsuarioController', function ($http, $scope
             id: usuarioAEditar.PerfilId
 
         };
-
-        console.log(datos);
-        console.log(usuarioAEditar);
-
-        //$http({
-
-        //    method: 'GET',
-        //    url: '/Manager/EditUsuario',
-        //    data: datos
-
-        //}).then(function success(response) {
-
-        //    swal.fire('Gj', 'Usuario Modificado', 'success')
-
-        //}, function error(err) {
-
-        //});
-
     }
 
     $scope.ConfirmarPassword = function () {
@@ -306,7 +355,6 @@ reclutamientoModule.controller('CrearUsuarioController', function ($http, $scope
 
     $scope.CreateUser = function () {
 
-    
         var datos = {
 
             Usuario: $scope.nombreUsuario,

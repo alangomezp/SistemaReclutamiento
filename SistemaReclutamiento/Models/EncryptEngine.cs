@@ -11,7 +11,8 @@ namespace SistemaReclutamiento.Models
 {
     public class EncryptEngine
     {
-
+        //Metodos de encriptacion y desencriotacion de strings con un key que se le pasa por parametro, es utilizado para encriptar
+        //las contraseñas a la hora de insertarlas en base de datos
         public static String Encriptar(string _password, string key)
         {
 

@@ -124,46 +124,6 @@ namespace SistemaReclutamiento.Controllers
 
         }
 
-
-        //public JsonResult EditUsuario(Usuarios usuarios)
-        //{
-        //    Response response = new Response();
-
-        //    var result = db.Usuarios.Where(a => a.Id == usuarios.Id).SingleOrDefault();
-
-        //    string key = "sdr";
-        //    var password = EncryptEngine.Encriptar(usuarios.Password, key);
-        //    try
-        //    {
-        //        if (result != null)
-        //        {
-        //            result.Password = password;
-        //            result.Usuario = usuarios.Usuario;
-        //            result.Correo = usuarios.Correo;
-        //            result.Descripcion = usuarios.Descripcion;
-        //            result.PerfilId = usuarios.PerfilId;
-
-        //            db.SaveChanges();
-
-        //        }
-
-        //        response.message = "Muy bien!";
-        //        response.messageInfo = "Modificado correctamente";
-        //        response.messageType = "success";
-
-        //        return new JsonResult { Data = response, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-        //    }
-        //    catch (Exception e)
-        //    {
-
-        //        response.message = "Error!";
-        //        response.messageInfo = e.Message;
-        //        response.messageType = "error";
-
-        //        return new JsonResult { Data = response, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-        //    }
-           
-        //}
         public JsonResult CreateUser(Usuarios usuarios)
         {
             Response response = new Response();

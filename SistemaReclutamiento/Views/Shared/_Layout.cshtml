@@ -1,6 +1,13 @@
 ﻿@using SistemaReclutamiento.Models
 <!DOCTYPE html>
-<html lang="en" ng-app="reclutamientoModule">
+
+<style>
+    .navbar-brand{
+
+        font-weight:bold;
+    }
+</style>
+<html lang="en" ng-app="reclutamientoModule" ng-controller="LayoutController">
 
 <head>
 
@@ -36,12 +43,14 @@
 
 </head>
 
+
+
 <body style="padding:0px">
 
     <!-- Navigation -->
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"><b>Sistema de Reclutamiento</b></a>
+        <a class="navbar-brand" href="#">@Html.ActionLink("Sistema de Reclutamiento", "VistaGeneral", "Reclutamiento", new { area = "" }, new { @class = "navbar-brand" })</a>
 
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -51,32 +60,35 @@
             @Html.ActionLink("Home", "Index", "Home")
         </li>*@
 
-
-
-
-                @if ((int)Session[Sesiones.Perfil] == 1)
+                @if ((int?)Session[Sesiones.Perfil] == 1)
                 {
+                    <li class="nav-item mr-3 ">
+                        @Html.ActionLink("Inicio", "VistaGeneral", "Reclutamiento")
+                    </li>
                     <li class="nav-item mr-3 ">
                         @Html.ActionLink("Crear Usuario", "CrearUsuario", "Manager")
                     </li>
+                    
+
                 }
-                else if ((int)Session[Sesiones.Perfil] == 2)
+                else if ((int?)Session[Sesiones.Perfil] == 2)
                 {
 
                     <li class="nav-item mr-3">
-                         @Html.ActionLink("About", "About", "Home")
+                        @Html.ActionLink("About", "About", "Home")
                     </li>
                     <li class="nav-item mr-3 ">
-                         @Html.ActionLink("Contact", "Contact", "Home")
+                        @Html.ActionLink("Contact", "Contact", "Home")
                     </li>
+
                 }
 
 
             </ul>
 
-                <form class="form-inline my-2 my-lg-0">
-                    <button class="btn btn-primary" href="#" type="button">@Html.ActionLink("Log Out", "Index", "Home", null, new { @style = "color:white; text-decoration:none" })  <i class="icon-logout"></i></button>
-                </form>
+            <form class="form-inline my-2 my-lg-0">
+                <button class="btn btn-primary" href="#" ng-click="Desloguearse()" type="button">Log Out@*@Html.ActionLink("Log Out", "Index", "Home", null, new { @style = "color:white; text-decoration:none" })*@  <i class="icon-logout"></i></button>
+            </form>
 
 
         </div>
@@ -93,7 +105,6 @@
 
             </div>
         </nav>*@
-
 
     @RenderBody()
 
