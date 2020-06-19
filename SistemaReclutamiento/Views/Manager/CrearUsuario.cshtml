@@ -117,9 +117,9 @@
                         </div>
 
                         <form class="form-inline mt-5 ml-5">
-                            <button type="button" id="btncrear" ng-click="CreateUser()" disabled class="btn btn-primary mr-3">Crear Usuario <i class="ml-1 fa fa-user-plus"></i></button>
-                            <button type="button" class="btn btn-secondary">Nuevo <i class="ml-1 fa fa-pencil-alt"></i></button>
-                            <button type="button" ng-show="modify" ng-click="ModificarUsuario()" class="btn btn-secondary">Modificar <i class="ml-1 fa fa-edit"></i></button>
+                            <button type="button" ng-show="modify" ng-click="ModificarUsuario()" class="btn btn-primary mr-3">Modificar <i class="ml-1 fa fa-edit"></i></button>
+                            <button type="button" ng-show="!modify" id="btncrear" ng-click="CreateUser()" disabled class="btn btn-primary mr-3">Crear Usuario <i class="ml-1 fa fa-user-plus"></i></button>
+                            <button type="button" class="btn btn-secondary" ng-click="LimpiarCrearUsuariosForm()">Nuevo <i class="ml-1 fa fa-pencil-alt"></i></button>
                         </form>
                     </div>
                 </div>
@@ -131,7 +131,11 @@
                         </div>
                         <h3 class="mb-5 ml-5">Usuarios Creados</h3>
 
-                        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                        <div class="table-wrapper-scroll-y my-custom-scrollbar" ng-hide="isLoading">
+
+                            <div class="spinner-border text-primary mt-5" ng-show="isLoading" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
                             <table class="table table-light table-hover">
                                 <thead>
                                     <tr>

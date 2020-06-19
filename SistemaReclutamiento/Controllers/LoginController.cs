@@ -19,6 +19,8 @@ namespace SistemaReclutamiento.Controllers
             return View();
         }
 
+        //Este es el metodo que se ejecuta al momento de logear al usuario donde comprueba que la 
+        //informacion que mando esta en la base de datos y si es asi se le da acceso de lo contrario no.
         public ActionResult LoginUsers(Users u)
         {
             string key = "sdr";

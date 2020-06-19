@@ -5,6 +5,8 @@ using System.Web;
 
 namespace SistemaReclutamiento.Models
 {
+
+    //Este es un modelo para las variables de sesion
     public class Sesiones
     {
         public const String Usuario = "usuario";

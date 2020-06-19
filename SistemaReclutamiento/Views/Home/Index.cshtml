@@ -171,7 +171,14 @@
                             </div>
                             <div class="w-50 p-3">
                                 <div class="col-md-12">
-                                    <b>Password  <i class="icon-lock"></i></b> <input type="password" ng-enter="Login()" ng-model="password" class="form-control" name="name" value="" />
+
+                                    <b>Password  <i class="icon-lock"></i></b> 
+                                    <div class="row">
+                                        <input type="password" ng-enter="Login()" ng-model="password" class="form-control ml-3" name="name" value="" />
+                                        <div class="spinner-border text-primary ml-3" ng-show="isLoading" role="status">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div ng-show="error" class="alert alert-danger mt-2" role="alert">
                                     <strong>Usuario o password incorrecto!</strong> Verifique sus datos.
